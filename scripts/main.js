@@ -71,4 +71,68 @@ const departments = {
     }
 }
 
+
 console.log(departments);
+
+console.log("De afdeling Sales heeft " + departments.sales.numberOfEmployees + " medewerkers");
+
+console.log("De afdeling Customer Service heeft " + departments["customer-service"].numberOfEmployees + " medewerkers");
+
+console.log("Sales is een uitdagende afdeling om te werken als Verkoopmanager. " + departments.sales.jobs[1].description);
+
+// Opdracht 2
+
+const userInput = prompt("Over welke afdeling wil je meer informatie? Kies uit: [marketing / sales / customer-service]");
+
+if (userInput === "marketing" || userInput === "sales" || userInput === "customer-service") {
+    console.log(`${userInput} is een leuke afdeling om te werken. Er werken op dit moment ${departments[userInput].numberOfEmployees} medewerkers.`);
+} else {
+    console.error('Onbekende afdeling. Probeer opnieuw.')
+    document.getElementById('error-message').textContent = "Afdeling niet gevonden. Probeer het nog eens.";
+}
+
+// SWITCH OPTIE
+
+// switch (userInput) {
+//     case "marketing":
+//         console.log(userInput + " is een leuke afdeling om te werken. Er werken op dit moment " + departments[userInput].numberOfEmployees + " medewerkers.");
+//         break;
+//     case "sales":
+//         console.log(userInput + " is een leuke afdeling om te werken. Er werken op dit moment " + departments[userInput].numberOfEmployees + " medewerkers.");
+//         break;
+//     case "customer-service":
+//         console.log(userInput + " is een leuke afdeling om te werken. Er werken op dit moment " + departments[userInput].numberOfEmployees + " medewerkers.");
+//         break;
+//     default:
+//         console.error('Onbekende afdeling. Probeer opnieuw.')
+// }
+
+// Restant opdrachten
+
+const userJobChoice = prompt(`Je koos ${userInput}. Over welke functie wil je meer weten? Voer een getal tussen 0 en 3 in.\n
+    0: [${departments[userInput].jobs[0].title}]
+    1: [${departments[userInput].jobs[1].title}]
+    2: [${departments[userInput].jobs[2].title}]
+    3: [${departments[userInput].jobs[3].title}]`);
+
+switch (userJobChoice) {
+    case "0":
+    case "1":
+    case "2":
+    case "3":
+
+        const jobNumber = departments[userInput].jobs[userJobChoice];
+
+        // console.log(jobNumber)
+
+        console.log(`Je koos: ${jobNumber.title}. Een uitdagende rol! ${jobNumber.description}`);
+        document.getElementById('role-title').textContent = jobNumber.title;
+        document.getElementById('department-description').textContent = departments[userInput].description;
+        document.getElementById('role-description').textContent = jobNumber.description;
+        break;
+
+    default:
+        console.log("Keuze bestaat niet");
+        document.getElementById('error-message').textContent = "Functie niet gevonden. Ververs de pagina en kies een getal tussen 0 en 3.";
+}
+
