@@ -123,7 +123,7 @@ switch (userJobChoice) {
 
         const jobNumber = departments[userInput].jobs[userJobChoice];
 
-        // console.log(jobNumber)
+        console.log(jobNumber)
 
         console.log(`Je koos: ${jobNumber.title}. Een uitdagende rol! ${jobNumber.description}`);
         document.getElementById('role-title').textContent = jobNumber.title;
